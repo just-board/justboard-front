@@ -50,4 +50,5 @@
 ### 🎞 프론트엔드 라이브러리(frontend used library)
 yarn add @mui/material @emotion/react @emotion/styled  
 yarn add @fontsource/roboto  
-yarn add typescript @types/node @types/react @types/react-dom @types/jest --dev  
+yarn add typescript @types/node @types/react @types/react-dom @types/jest --dev
+yarn add react-router-dom
