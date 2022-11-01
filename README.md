@@ -38,14 +38,15 @@
     - 이메일 인증 로그인(Login with the authorized email)
 <br/>
 
-## 👯‍♀️ 프로젝트 구성원(Progect member)
+## 👯‍♀️ 프로젝트 구성원(Project member)
 |Github Id|Role|
 |-------|---|
 |[CINY4612](https://github.com/CINY4612)|backend|
 |[lovysunny7](https://github.com/lovysunny7)|frontend|
 
-<br/>
 
+----
+----
 ### 🎞 프론트엔드 라이브러리(frontend used library)
 yarn add @mui/material @emotion/react @emotion/styled  
 yarn add @fontsource/roboto  
