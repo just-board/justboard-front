@@ -52,3 +52,5 @@ yarn add @mui/material @emotion/react @emotion/styled
 yarn add @fontsource/roboto  
 yarn add typescript @types/node @types/react @types/react-dom @types/jest --dev
 yarn add react-router-dom
+yarn add @mui/icons-material
+yarn add @material-ui/styles
