@@ -15,6 +15,7 @@ import AccountCircle from '@mui/icons-material/AccountCircle';
 import MailIcon from '@mui/icons-material/Mail';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import MoreIcon from '@mui/icons-material/MoreVert';
+import Logo from './Logo';
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -167,6 +168,9 @@ const Header = () => {
           >
             <MenuIcon />
           </IconButton>
+          {/* <img src="logo192.png" alt="test" /> */}
+          <Logo src="logo192.png"/>
+          <h1>하이</h1>
           <Typography
             variant="h6"
             noWrap
