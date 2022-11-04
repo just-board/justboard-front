@@ -1,5 +1,5 @@
 import React from 'react';
-import { styled, alpha } from '@mui/material/styles';
+import { styled, alpha, createTheme, ThemeProvider} from '@mui/material/styles';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -16,6 +16,8 @@ import MailIcon from '@mui/icons-material/Mail';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import MoreIcon from '@mui/icons-material/MoreVert';
 import Logo from './Logo';
+import LogoSrc from './assets/logo.png';
+// import { ThemeProvider } from '@material-ui/styles';
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -168,9 +170,7 @@ const Header = () => {
           >
             <MenuIcon />
           </IconButton>
-          {/* <img src="logo192.png" alt="test" /> */}
-          <Logo src="logo192.png"/>
-          <h1>하이</h1>
+          <Logo src={LogoSrc}/>
           <Typography
             variant="h6"
             noWrap
