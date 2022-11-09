@@ -1,5 +1,5 @@
-import React from 'react';
-import { styled, alpha, createTheme, ThemeProvider} from '@mui/material/styles';
+import React, {useRef} from 'react';
+import { styled, alpha} from '@mui/material/styles';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -15,9 +15,15 @@ import AccountCircle from '@mui/icons-material/AccountCircle';
 import MailIcon from '@mui/icons-material/Mail';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import MoreIcon from '@mui/icons-material/MoreVert';
+import BrushIcon from '@mui/icons-material/Brush';
 import Logo from './Logo';
 import LogoSrc from './assets/logo.png';
+import { Button } from '@mui/material';
+import customTheme from '../style/customTheme';
+import HeaderDrawer from './HeaderDrawer';
+
 // import { ThemeProvider } from '@material-ui/styles';
+
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -59,7 +65,10 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
-const Header = () => {
+const Header = (props) => {
+  const themeList = [ customTheme.lightTheme, customTheme.pinkTheme, customTheme.blueTheme];
+  let number = useRef(0);
+
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
 
@@ -82,6 +91,13 @@ const Header = () => {
   const handleMobileMenuOpen = (event) => {
     setMobileMoreAnchorEl(event.currentTarget);
   };
+
+  
+
+  const handleChangeThemeButton = () =>{
+    number.current = number.current+1;
+    props.setTheme(themeList[number.current%themeList.length])
+  }
 
   const menuId = 'primary-search-account-menu';
   const renderMenu = (
@@ -161,24 +177,8 @@ const Header = () => {
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
         <Toolbar>
-          <IconButton
-            size="large"
-            edge="start"
-            color="inherit"
-            aria-label="open drawer"
-            sx={{ mr: 2 }}
-          >
-            <MenuIcon />
-          </IconButton>
+          <HeaderDrawer />
           <Logo src={LogoSrc}/>
-          <Typography
-            variant="h6"
-            noWrap
-            component="div"
-            sx={{ display: { xs: 'none', sm: 'block' } }}
-          >
-            JUST BOARD
-          </Typography>
           {/* <Search>
             <SearchIconWrapper>
               <SearchIcon />
@@ -190,7 +190,12 @@ const Header = () => {
           </Search> */}
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
-            <IconButton size="large" aria-label="show 4 new mails" color="inherit">
+            <IconButton onClick={handleChangeThemeButton} size="large" color="inherit">
+              <Badge color="error">
+                <BrushIcon/>
+              </Badge>
+            </IconButton>
+            <IconButton size="large" color="inherit">
               <Badge badgeContent={4} color="error">
                 <MailIcon />
               </Badge>

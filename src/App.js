@@ -3,13 +3,18 @@ import './App.css';
 import Main from './pages/Main';
 import Header from './component/Header';
 import customTheme from './style/customTheme';
+import { useState, useRef } from 'react';
 
 function App() {
+  const [selectTheme, setTheme] = useState(customTheme.lightTheme);
+ 
   return (
-    <ThemeProvider theme={customTheme.pinkTheme}>
-     <Header/>
+    <>
+    <ThemeProvider theme={selectTheme}>
+     <Header setTheme={setTheme}/>
      <Main/>
      </ThemeProvider>
+    </>
   );
 }
 
