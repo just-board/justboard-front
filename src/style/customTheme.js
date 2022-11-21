@@ -12,21 +12,21 @@ pinkTheme : createTheme({
           main: '#f50057',
         },
       },
-      typography: {
-        body1: {
-          fontFamily: 'Yeon Sung',
-        },
-        fontFamily: 'Yeon Sung',
-        caption: {
-          fontFamily: 'Yeon Sung',
-        },
-        overline: {
-          fontFamily: 'Yeon Sung',
-        },
-        body2: {
-          fontFamily: 'Yeon Sung',
-        },
-      },
+      // typography: {
+      //   body1: {
+      //     fontFamily: 'Song Myung',
+      //   },
+      //   fontFamily: 'Song Myung',
+      //   caption: {
+      //     fontFamily: 'Song Myung',
+      //   },
+      //   overline: {
+      //     fontFamily: 'Song Myung',
+      //   },
+      //   body2: {
+      //     fontFamily: 'Song Myung',
+      //   },
+      // },
 }),
 blueTheme : createTheme({
     palette: {
@@ -38,21 +38,21 @@ blueTheme : createTheme({
           main: '#f50057',
         },
       },
-      typography: {
-        body1: {
-          fontFamily: 'Yeon Sung',
-        },
-        fontFamily: 'Yeon Sung',
-        caption: {
-          fontFamily: 'Yeon Sung',
-        },
-        overline: {
-          fontFamily: 'Yeon Sung',
-        },
-        body2: {
-          fontFamily: 'Yeon Sung',
-        },
-      },
+      // typography: {
+      //   body1: {
+      //     fontFamily: 'Song Myung',
+      //   },
+      //   fontFamily: 'Song Myung',
+      //   caption: {
+      //     fontFamily: 'Song Myung',
+      //   },
+      //   overline: {
+      //     fontFamily: 'Song Myung',
+      //   },
+      //   body2: {
+      //     fontFamily: 'Song Myung',
+      //   },
+      // },
 }),
 lightTheme : createTheme({
   palette: {
@@ -77,17 +77,17 @@ lightTheme : createTheme({
   },
     typography: {
       body1: {
-        fontFamily: 'Yeon Sung',
+        fontFamily: 'Song Myung',
       },
-      fontFamily: 'Yeon Sung',
+      fontFamily: 'Song Myung',
       caption: {
-        fontFamily: 'Yeon Sung',
+        fontFamily: 'Song Myung',
       },
       overline: {
-        fontFamily: 'Yeon Sung',
+        fontFamily: 'Song Myung',
       },
       body2: {
-        fontFamily: 'Yeon Sung',
+        fontFamily: 'Song Myung',
       },
     },
 }),
