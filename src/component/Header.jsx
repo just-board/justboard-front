@@ -66,10 +66,11 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 const Header = (props) => {
-  const themeList = [ customTheme.lightTheme, customTheme.pinkTheme, customTheme.blueTheme];
+  const themeList = [ customTheme.pinkTheme, customTheme.blueTheme];
   let number = useRef(0);
 
   const [anchorEl, setAnchorEl] = React.useState(null);
+  const [isLogin, setLogin] = React.useState(false);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
 
   const isMenuOpen = Boolean(anchorEl);
