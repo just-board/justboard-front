@@ -21,8 +21,8 @@ import LogoSrc from './assets/logo.png';
 import { Button } from '@mui/material';
 import customTheme from '../style/customTheme';
 import HeaderDrawer from './HeaderDrawer';
+import LoginIcon from '@mui/icons-material/Login';
 
-// import { ThemeProvider } from '@material-ui/styles';
 
 
 const Search = styled('div')(({ theme }) => ({
@@ -119,11 +119,12 @@ const Header = (props) => {
     >
       <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
       <MenuItem onClick={handleMenuClose}>My Page</MenuItem>
+      <MenuItem onClick={handleMenuClose}>Logout</MenuItem>
     </Menu>
   );
 
   const mobileMenuId = 'primary-search-account-menu-mobile';
-  const renderMobileMenu = (
+  const renderMobileMenu = isLogin ? (
     <Menu
       anchorEl={mobileMoreAnchorEl}
       anchorOrigin={{
@@ -171,6 +172,24 @@ const Header = (props) => {
         </IconButton>
         <p>Profile</p>
       </MenuItem>
+    </Menu> ): (
+    <Menu 
+    open={isMobileMenuOpen}
+    onClose={handleMobileMenuClose}
+    anchorEl={mobileMoreAnchorEl}
+    anchorOrigin={{
+      vertical: 'top',
+      horizontal: 'right',
+    }}
+    >
+    <MenuItem>
+    <IconButton size="large" color="inherit">
+            <Badge color="error">
+              <LoginIcon />
+              <Typography>  Login</Typography>
+            </Badge>
+          </IconButton>
+    </MenuItem>
     </Menu>
   );
 
@@ -190,13 +209,13 @@ const Header = (props) => {
             />
           </Search> */}
           <Box sx={{ flexGrow: 1 }} />
-          <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
+          <Box sx={{ display: { xs: 'flex', md: 'flex' } }}>
             <IconButton onClick={handleChangeThemeButton} size="large" color="inherit">
               <Badge color="error">
                 <BrushIcon/>
               </Badge>
             </IconButton>
-            {isLogin &&
+            {!isLogin ?
            (<>
            <IconButton size="large" color="inherit">
               <Badge badgeContent={4} color="error">
@@ -224,10 +243,17 @@ const Header = (props) => {
               <AccountCircle />
             </IconButton>
             </>
+           ) : (
+            <IconButton size="large" color="inherit">
+            <Badge color="error">
+              <LoginIcon />
+              <Typography>  Login</Typography>
+            </Badge>
+          </IconButton>
            )
             }
           </Box>
-          <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
+          {/* <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
             <IconButton
               size="large"
               aria-label="show more"
@@ -238,7 +264,7 @@ const Header = (props) => {
             >
               <MoreIcon />
             </IconButton>
-          </Box>
+          </Box> */}
         </Toolbar>
       </AppBar>
       {renderMobileMenu}
