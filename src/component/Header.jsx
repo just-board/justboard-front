@@ -66,7 +66,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 const Header = (props) => {
-  const themeList = [ customTheme.pinkTheme, customTheme.blueTheme];
+  const themeList = [customTheme.pinkTheme, customTheme.blueTheme];
   let number = useRef(0);
 
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -196,7 +196,9 @@ const Header = (props) => {
                 <BrushIcon/>
               </Badge>
             </IconButton>
-            <IconButton size="large" color="inherit">
+            {isLogin &&
+           (<>
+           <IconButton size="large" color="inherit">
               <Badge badgeContent={4} color="error">
                 <MailIcon />
               </Badge>
@@ -221,6 +223,9 @@ const Header = (props) => {
             >
               <AccountCircle />
             </IconButton>
+            </>
+           )
+            }
           </Box>
           <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
             <IconButton

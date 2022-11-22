@@ -6,7 +6,7 @@ import customTheme from './style/customTheme';
 import { useState, useRef } from 'react';
 
 function App() {
-  const [selectTheme, setTheme] = useState(customTheme.lightTheme);
+  const [selectTheme, setTheme] = useState(customTheme.pinkTheme);
  
   return (
     <>
