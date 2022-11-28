@@ -89,7 +89,7 @@ const Header = (props) => {
   }
 
   const handleLogin = () =>{
-    console.log('click');
+    // console.log('Login click');
     setLoginOpen(true);
   }
   const handleClose = () => setLoginOpen(false);
@@ -185,9 +185,8 @@ const Header = (props) => {
     <Login
       open={isLoginOpen}
       onClose={handleClose}
-    >
-      hello
-    </Login>
+      setLoginOpen={setLoginOpen}
+    />
      {/* <Modal
         open={isLoginOpen}
         onClose={handleClose}
