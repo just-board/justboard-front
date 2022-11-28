@@ -10,6 +10,7 @@ import LogoSrc from "./assets/logo.png";
 import KakaoLoginSrc from "./assets/kakao_login_medium_narrow.png";
 import Button from "@mui/material/Button";
 import LoginEmail from "./LoginEmail";
+import CloseIcon from '@mui/icons-material/Close';
 
 const showbox = {};
 
@@ -17,7 +18,7 @@ const boxStyle = {
   display: { xs: "none", sm: "inline-flex", md: "inline-flex" },
   flexDirection: "column",
   width: "500px",
-  height: "500px",
+  height: "350px",
   justifyContent: "center",
   alignItems: "center",
 };
@@ -34,13 +35,14 @@ const boxMobileStyle = {
 const Login = (props) => {
   const theme = useTheme();
   const fullScreen = useMediaQuery(theme.breakpoints.down("sm"));
-  // const []
+
   const [statusLoginEmail, setStatusLoginEmail] = React.useState(false);
 
   const onClickClose = () =>{
     // console.log('close');
     props.setLoginOpen(false);
-    
+    // setStatusLoginEmail(false);
+
   }
 
   const onClickLoginEmail = () => {
@@ -51,14 +53,12 @@ const Login = (props) => {
   const NomalLoginBox = (props) => {
     return (
       <Box sx={props.sx}>
-        <img alt="logo" src={LogoSrc} style={{ width: "35%" }} />
-        <br />
         <Button size="large">
           <img alt="kakao login" src={KakaoLoginSrc} />
         </Button>
         <br />
         <Button
-          sx={{ width: "183px", backgroundColor: "lightgrey" }}
+          sx={{ width: "183px", backgroundColor: "#E9ECEF" }}
           size="large"
           onClick={onClickLoginEmail}
         >
@@ -70,6 +70,15 @@ const Login = (props) => {
     );
   };
 
+
+  // all reset when close modal
+  React.useEffect(() => {
+    return () => {
+      props.open &&
+    setStatusLoginEmail(false);
+    }
+  }, [props.onClose])
+
   return (
     <Dialog
       open={props.open}
@@ -78,17 +87,16 @@ const Login = (props) => {
       maxWidth="md"
     >
      
-      <DialogContent>
-        <Box sx={{textAlign:'right'}} onClick={onClickClose}> <Button>X</Button></Box>
+      <Box sx={{textAlign:'right', p:1}}> <Button sx={{color: (theme) => theme.palette.grey[500]}} onClick={onClickClose}><CloseIcon/></Button></Box>
+      <DialogContent sx={{display: 'flex',  justifyContent: "center", alignItems: "center",   flexDirection: "column", }}>
+        <img alt="logo" src={LogoSrc} style={{ width: "35%" }} />
         <NomalLoginBox sx={boxStyle} />
         <NomalLoginBox sx={boxMobileStyle} />
-        <LoginEmail
+        {statusLoginEmail && <LoginEmail
           sx={{
-            display: statusLoginEmail
-              ? { xs: "none", sm: "flex", md: "flex" }
-              : "none",
+            display: "flex"
           }}
-        />
+        />}
       </DialogContent>
     </Dialog>
   );
