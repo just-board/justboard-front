@@ -22,7 +22,8 @@ import { Button } from '@mui/material';
 import customTheme from '../style/customTheme';
 import HeaderDrawer from './HeaderDrawer';
 import LoginIcon from '@mui/icons-material/Login';
-
+import Login from './Login';
+import Modal from '@mui/material/Modal';
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -72,6 +73,7 @@ const Header = (props) => {
   const [isLogin, setLogin] = React.useState(false);
 
   const isMenuOpen = Boolean(anchorEl);
+  const [isLoginOpen, setLoginOpen] = React.useState(false); 
 
   const handleProfileMenuOpen = (event) => {
     setAnchorEl(event.currentTarget);
@@ -85,6 +87,12 @@ const Header = (props) => {
     number.current = number.current+1;
     props.setTheme(themeList[number.current%themeList.length])
   }
+
+  const handleLogin = () =>{
+    console.log('click');
+    setLoginOpen(true);
+  }
+  const handleClose = () => setLoginOpen(false);
 
   const menuId = 'primary-search-account-menu';
   const renderMenu = (
@@ -110,6 +118,7 @@ const Header = (props) => {
   );
 
   return (
+    <>
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
         <Toolbar>
@@ -131,7 +140,7 @@ const Header = (props) => {
                 <BrushIcon/>
               </Badge>
             </IconButton>
-            {!isLogin ?
+            {isLogin ?
            (<>
            <IconButton size="large" color="inherit">
               <Badge badgeContent={4} color="error">
@@ -160,7 +169,7 @@ const Header = (props) => {
             </IconButton>
             </>
            ) : (
-            <IconButton size="large" color="inherit">
+            <IconButton onClick={handleLogin} size="large" color="inherit">
             <Badge color="error">
               <LoginIcon />
               <Typography>  Login</Typography>
@@ -173,6 +182,22 @@ const Header = (props) => {
       </AppBar>
       {renderMenu}
     </Box>
+    <Login
+      open={isLoginOpen}
+      onClose={handleClose}
+    >
+      hello
+    </Login>
+     {/* <Modal
+        open={isLoginOpen}
+        onClose={handleClose}
+        // sx={{bgcolor:'white', backgroundColor:'white'}}
+      >
+        <Box>
+         Header
+        </Box>
+      </Modal> */}
+    </>
   );
 }
 
