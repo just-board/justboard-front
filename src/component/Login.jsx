@@ -35,7 +35,7 @@ const boxMobileStyle = {
 const Login = (props) => {
   const theme = useTheme();
   const fullScreen = useMediaQuery(theme.breakpoints.down("sm"));
-
+  const [statusLogin, setStatusLogin] = React.useState(true);
   const [statusLoginEmail, setStatusLoginEmail] = React.useState(false);
 
   const onClickClose = () =>{
@@ -47,7 +47,9 @@ const Login = (props) => {
 
   const onClickLoginEmail = () => {
     console.log("hello");
-    setStatusLoginEmail((prev)=>!prev);
+    // setStatusLoginEmail((prev)=>!prev);
+    setStatusLoginEmail(true);
+    setStatusLogin(false);
   };
 
   const NomalLoginBox = (props) => {
@@ -74,8 +76,11 @@ const Login = (props) => {
   // all reset when close modal
   React.useEffect(() => {
     return () => {
-      props.open &&
+      if(props.open)
+    {
     setStatusLoginEmail(false);
+    // setStatusLogin(true);
+    }
     }
   }, [props.onClose])
 
@@ -90,8 +95,11 @@ const Login = (props) => {
       <Box sx={{textAlign:'right', p:1}}> <Button sx={{color: (theme) => theme.palette.grey[500]}} onClick={onClickClose}><CloseIcon/></Button></Box>
       <DialogContent sx={{display: 'flex',  justifyContent: "center", alignItems: "center",   flexDirection: "column", }}>
         <img alt="logo" src={LogoSrc} style={{ width: "35%" }} />
+        {statusLogin &&
+        <>
         <NomalLoginBox sx={boxStyle} />
         <NomalLoginBox sx={boxMobileStyle} />
+        </>}
         {statusLoginEmail && <LoginEmail
           sx={{
             display: "flex"
